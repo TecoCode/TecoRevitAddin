@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aide des commandes - Teco Revit</title>
+  <style>
+    :root {
+      --bg: #f6f7f8;
+      --panel: #ffffff;
+      --text: #1f2328;
+      --muted: #626b75;
+      --border: #d7dce1;
+      --tag: #eef1f4;
+      --accent: #5b4aa8;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 1.65rem;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .language-switch {
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    button {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    button.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(230px, 310px) minmax(0, 1fr);
+      gap: 24px;
+      padding: 24px 32px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    nav {
+      align-self: start;
+      position: sticky;
+      top: 126px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      max-height: calc(100vh - 160px);
+      overflow: auto;
+    }
+
+    nav h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      margin: 4px 0;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .command {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+      scroll-margin-top: 150px;
+    }
+
+    .command h2 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+    }
+
+    .command p {
+      margin: 14px 0 0;
+    }
+
+    .meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    code {
+      background: var(--tag);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: Consolas, "Courier New", monospace;
+      color: #333;
+    }
+
+    .tag {
+      background: var(--tag);
+      border-radius: 999px;
+      padding: 2px 8px;
+    }
+
+    .anchor {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    body[data-lang="fr"] .lang-en,
+    body[data-lang="en"] .lang-fr,
+    body[data-lang="fr"] .toc-en,
+    body[data-lang="en"] .toc-fr {
+      display: none;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        position: static;
+      }
+
+      main {
+        display: block;
+        padding: 16px;
+      }
+
+      nav {
+        position: static;
+        margin-bottom: 16px;
+        max-height: none;
+      }
+
+      .command {
+        scroll-margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body data-lang="fr">
+  <header>
+    <h1 class="lang lang-fr">Aide des commandes Teco Revit</h1>
+    <h1 class="lang lang-en">Teco Revit Command Help</h1>
+    <p class="lang lang-fr">Page d'aide générée à partir du fichier <code>TecoRevitCore.commandsinfo.json</code>.</p>
+    <p class="lang lang-en">Help page generated from the <code>TecoRevitCore.commandsinfo.json</code> file.</p>
+
+    <div class="language-switch" aria-label="Language">
+      <button type="button" id="btn-fr" onclick="setLanguage('fr')">Français</button>
+      <button type="button" id="btn-en" onclick="setLanguage('en')">English</button>
+    </div>
+  </header>
+
+  <main>
+    <nav>
+      <h2 class="lang lang-fr">Commandes</h2>
+      <h2 class="lang lang-en">Commands</h2>
+      <ul class="toc-fr">
+        <li><a href="#ViewTitlesAdjustExtensionLineLength">Bulles titre de vue - Ajuster longueur ligne extension</a></li><li><a href="#ViewTitlesMoveToSheetBottomRightCorner">Bulles titre de vue - Au coin inférieur droit de la feuille</a></li><li><a href="#ViewTitlesMoveToViewBottomRightCorner">Bulles titre de vue - Au coin inférieur droit des fenêtres</a></li><li><a href="#ChangeSheetTitleBlock">Changer le cartouche des feuilles</a></li><li><a href="#Datasmith2026PatchFileOnly">Corriger fichier Datasmith 2026</a></li><li><a href="#Datasmith2026ExportAndPatchFile">Exporter et corriger fichier Datasmith 2026</a></li><li><a href="#FormatAndCleanTextNotes">Formatter et nettoyer notes textuelles</a></li><li><a href="#InitializeNoteViewParameter">Initialiser le paramètre Vue des notes</a></li><li><a href="#UpdateTotalSheetCount">Mettre à jour le nombre de feuilles total</a></li><li><a href="#UpdateDoorScheduleRooms">Mettre à jour les pièces dans un tableau de portes</a></li><li><a href="#UppercaseScheduleHeaders">Nomenclatures - En-têtes en MAJUSCULES</a></li><li><a href="#O3_2025A_TP4A">O3 Corriger TP4A - Préparation</a></li><li><a href="#O3_2025A_TP4B">O3 Corriger TP4B - Liaison plans</a></li><li><a href="#O3_2025A_TP4C">O3 Corriger TP4C - Construction</a></li><li><a href="#O3_2025A_TP4D">O3 Corriger TP4D - Pièces</a></li><li><a href="#RenameGrids">Quadrillages - Renommer</a></li><li><a href="#RenameUsedMaterialAppearancesLikeMaterials">Renommer les apparences comme les matériaux</a></li><li><a href="#DimensionTextMoveInsideCropRegion">Repositionner automatiquement le texte des dimensions dans le cadrage</a></li><li><a href="#DimensionTextMoveToPoint">Repositionner le texte d&#x27;une dimension</a></li><li><a href="#SelectByPhase">Sélectionner par phase</a></li><li><a href="#TransferRoomFinishesFinishesToIndexes">Transférer les finitions de pièce (finitions &gt; index)</a></li><li><a href="#TransferRoomFinishesIndexesToFinishes">Transférer les finitions de pièce (index &gt; finitions)</a></li><li><a href="#WallTypesRemoveCoarseScaleFillPattern">Types de mur - Retirer Motif vue détail faible</a></li><li><a href="#ListUsedMaterialsWithMissingTextures">Vérifier les textures des matériaux</a></li><li><a href="#ZoomSelection">Zoom sélection</a></li>
+      </ul>
+      <ul class="toc-en">
+        <li><a href="#ViewTitlesAdjustExtensionLineLength">View titles - Adjust extension line length</a></li><li><a href="#ViewTitlesMoveToSheetBottomRightCorner">View titles - Bottom-right corner of the sheet</a></li><li><a href="#ViewTitlesMoveToViewBottomRightCorner">View titles - Bottom-right corner of viewports</a></li><li><a href="#ChangeSheetTitleBlock">Change Sheet Title Block</a></li><li><a href="#Datasmith2026PatchFileOnly">Patch Datasmith 2026 File</a></li><li><a href="#Datasmith2026ExportAndPatchFile">Export and Fix Datasmith 2026 File</a></li><li><a href="#FormatAndCleanTextNotes">Format and Clean Text Notes</a></li><li><a href="#InitializeNoteViewParameter">Initialize Note View Parameter</a></li><li><a href="#UpdateTotalSheetCount">Update Total Sheet Count</a></li><li><a href="#UpdateDoorScheduleRooms">Update Rooms in Door Schedule</a></li><li><a href="#UppercaseScheduleHeaders">Schedules - UPPERCASE headers</a></li><li><a href="#O3_2025A_TP4A">O3 Grade TP4A - Preparation</a></li><li><a href="#O3_2025A_TP4B">O3 Grade TP4B - Linked Plans</a></li><li><a href="#O3_2025A_TP4C">O3 Grade TP4C - Construction</a></li><li><a href="#O3_2025A_TP4D">O3 Grade TP4D - Rooms</a></li><li><a href="#RenameGrids">Grids - Rename</a></li><li><a href="#RenameUsedMaterialAppearancesLikeMaterials">Rename Appearances Like Materials</a></li><li><a href="#DimensionTextMoveInsideCropRegion">Automatically Reposition Dimension Text Inside Crop Region</a></li><li><a href="#DimensionTextMoveToPoint">Reposition Dimension Text</a></li><li><a href="#SelectByPhase">Select by Phase</a></li><li><a href="#TransferRoomFinishesFinishesToIndexes">Transfer Room Finishes (finishes &gt; index)</a></li><li><a href="#TransferRoomFinishesIndexesToFinishes">Transfer Room Finishes (index &gt; finishes)</a></li><li><a href="#WallTypesRemoveCoarseScaleFillPattern">Wall Types - Remove Coarse Scale Fill Pattern</a></li><li><a href="#ListUsedMaterialsWithMissingTextures">Check Material Textures</a></li><li><a href="#ZoomSelection">Zoom Selection</a></li>
+      </ul>
+    </nav>
+
+    <section>
+      
+      <article class="command" id="ViewTitlesAdjustExtensionLineLength">
+        <a class="anchor" href="#ViewTitlesAdjustExtensionLineLength" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Bulles titre de vue - Ajuster longueur ligne extension</h2>
+          <div class="meta"><code>ViewTitlesAdjustExtensionLineLength</code><span class="tag">Mise en page</span></div>
+          <p>Ajuste la longueur de la ligne d&#x27;extension des bulles titre de vue en fonction du titre.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>View titles - Adjust extension line length</h2>
+          <div class="meta"><code>ViewTitlesAdjustExtensionLineLength</code><span class="tag">Sheet</span></div>
+          <p>Adjusts the extension line length of view title bubbles based on the title.</p>
+        </div>
+      </article>
+
+      <article class="command" id="ViewTitlesMoveToSheetBottomRightCorner">
+        <a class="anchor" href="#ViewTitlesMoveToSheetBottomRightCorner" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Bulles titre de vue - Au coin inférieur droit de la feuille</h2>
+          <div class="meta"><code>ViewTitlesMoveToSheetBottomRightCorner</code><span class="tag">Mise en page</span></div>
+          <p>Sélectionne le type en fonction de la taille de la feuille, ajuste la longueur de la ligne d&#x27;extension et déplace la bulle titre de vue au coin inférieur droit de la zone des vues. ATTENTION si cette commande est utilisée sur plusieurs fenêtres dans une même feuille, les bulles se superposeront. Seulement certaines cartouches sont actuellement supportées.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>View titles - Bottom-right corner of the sheet</h2>
+          <div class="meta"><code>ViewTitlesMoveToSheetBottomRightCorner</code><span class="tag">Sheet</span></div>
+          <p>Selects the type based on the sheet size, adjusts the extension line length, and moves the view title bubble to the bottom-right corner of the view area. WARNING: if this command is used on multiple viewports on the same sheet, the bubbles will overlap. Only some title blocks are currently supported.</p>
+        </div>
+      </article>
+
+      <article class="command" id="ViewTitlesMoveToViewBottomRightCorner">
+        <a class="anchor" href="#ViewTitlesMoveToViewBottomRightCorner" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Bulles titre de vue - Au coin inférieur droit des fenêtres</h2>
+          <div class="meta"><code>ViewTitlesMoveToViewBottomRightCorner</code><span class="tag">Mise en page</span></div>
+          <p>Sélectionne le type en fonction de la taille de la feuille, ajuste la longueur de la ligne d&#x27;extension et déplace les bulles titre de vue au coin inférieur droit des fenêtres.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>View titles - Bottom-right corner of viewports</h2>
+          <div class="meta"><code>ViewTitlesMoveToViewBottomRightCorner</code><span class="tag">Sheet</span></div>
+          <p>Selects the type based on the sheet size, adjusts the extension line length, and moves the view title bubbles to the bottom-right corner of the viewports.</p>
+        </div>
+      </article>
+
+      <article class="command" id="ChangeSheetTitleBlock">
+        <a class="anchor" href="#ChangeSheetTitleBlock" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Changer le cartouche des feuilles</h2>
+          <div class="meta"><code>ChangeSheetTitleBlock</code><span class="tag">Mise en page</span></div>
+          <p>Change le type de cartouche des feuilles sélectionnées.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Change Sheet Title Block</h2>
+          <div class="meta"><code>ChangeSheetTitleBlock</code><span class="tag">Sheet</span></div>
+          <p>Changes the title block type of the selected sheets.</p>
+        </div>
+      </article>
+
+      <article class="command" id="Datasmith2026PatchFileOnly">
+        <a class="anchor" href="#Datasmith2026PatchFileOnly" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Corriger fichier Datasmith 2026</h2>
+          <div class="meta"><code>Datasmith2026PatchFileOnly</code><span class="tag">Twinmotion</span></div>
+          <p>Corrige les erreurs d&#x27;identifiants de matériau dans un fichier d&#x27;exportation .udatasmith créé avec l&#x27;outil Twinmotion &gt; Exporter vers un fichier Datasmith.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Patch Datasmith 2026 File</h2>
+          <div class="meta"><code>Datasmith2026PatchFileOnly</code><span class="tag">Twinmotion</span></div>
+          <p>Fixes material identifier errors in a .udatasmith export file created using Twinmotion &gt; Export to Datasmith File.</p>
+        </div>
+      </article>
+
+      <article class="command" id="Datasmith2026ExportAndPatchFile">
+        <a class="anchor" href="#Datasmith2026ExportAndPatchFile" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Exporter et corriger fichier Datasmith 2026</h2>
+          <div class="meta"><code>Datasmith2026ExportAndPatchFile</code><span class="tag">Twinmotion</span></div>
+          <p>Exporte et corrige les erreurs d&#x27;identifiants de matériau dans un fichier d&#x27;exportation .udatasmith. Cette commande s&#x27;occupe de lancer préalablement Twinmotion &gt; Exporter vers un fichier Datasmith.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Export and Fix Datasmith 2026 File</h2>
+          <div class="meta"><code>Datasmith2026ExportAndPatchFile</code><span class="tag">Twinmotion</span></div>
+          <p>Exports and fixes material identifier errors in a .udatasmith export file. This command automatically launches Twinmotion &gt; Export to Datasmith File beforehand.</p>
+        </div>
+      </article>
+
+      <article class="command" id="FormatAndCleanTextNotes">
+        <a class="anchor" href="#FormatAndCleanTextNotes" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Formatter et nettoyer notes textuelles</h2>
+          <div class="meta"><code>FormatAndCleanTextNotes</code><span class="tag">Annotations</span> <span class="tag">Mise en page</span></div>
+          <p>Formatte le texte en MAJUSCULES et uniformise plusieurs caractères dans les notes textuelles.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Format and Clean Text Notes</h2>
+          <div class="meta"><code>FormatAndCleanTextNotes</code><span class="tag">Annotations</span> <span class="tag">Sheet</span></div>
+          <p>Formats text in UPPERCASE and standardizes several characters in text notes.</p>
+        </div>
+      </article>
+
+      <article class="command" id="InitializeNoteViewParameter">
+        <a class="anchor" href="#InitializeNoteViewParameter" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Initialiser le paramètre Vue des notes</h2>
+          <div class="meta"><code>InitializeNoteViewParameter</code><span class="tag">Annotations</span></div>
+          <p>Initialise le paramètre &quot;Vue&quot; de toutes les notes basées sur la famille &quot;SS_Annotation_Note_01&quot; en entrant le nom de la vue dans laquelle la note a été ajoutée. Ceci facilitera ensuite le filtrage des tableaux de notes, si vous désirez filtrer par vue.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Initialize Note View Parameter</h2>
+          <div class="meta"><code>InitializeNoteViewParameter</code><span class="tag">Annotations</span></div>
+          <p>Initializes the &quot;View&quot; parameter of all notes based on the &quot;SS_Annotation_Note_01&quot; family by entering the name of the view in which the note was added. This will make it easier to filter note schedules by view.</p>
+        </div>
+      </article>
+
+      <article class="command" id="UpdateTotalSheetCount">
+        <a class="anchor" href="#UpdateTotalSheetCount" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Mettre à jour le nombre de feuilles total</h2>
+          <div class="meta"><code>UpdateTotalSheetCount</code><span class="tag">Mise en page</span></div>
+          <p>Met à jour le nombre de feuilles total dans les jeux de feuilles sélectionnés. Le paramètre SS_Nombre de feuilles total doit être présent dans le projet. Seules les feuilles dont la propriété Figure dans la liste des feuilles est cochée seront comptabilisées.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Update Total Sheet Count</h2>
+          <div class="meta"><code>UpdateTotalSheetCount</code><span class="tag">Sheet</span></div>
+          <p>Updates the total sheet count in the selected sheet sets. The SS_Nombre de feuilles total parameter must be present in the project. Only sheets whose Appears in Sheet List property is checked will be counted.</p>
+        </div>
+      </article>
+
+      <article class="command" id="UpdateDoorScheduleRooms">
+        <a class="anchor" href="#UpdateDoorScheduleRooms" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Mettre à jour les pièces dans un tableau de portes</h2>
+          <div class="meta"><code>UpdateDoorScheduleRooms</code><span class="tag">Nomenclatures</span></div>
+          <p>Met à jour la propriété Porte pièces en combinant DE @ À. Les pièces vides seront indiquées extérieures EXT.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Update Rooms in Door Schedule</h2>
+          <div class="meta"><code>UpdateDoorScheduleRooms</code><span class="tag">Schedules</span></div>
+          <p>Updates the Porte pièces property by combining FROM @ TO. Empty rooms will be marked as exterior EXT.</p>
+        </div>
+      </article>
+
+      <article class="command" id="UppercaseScheduleHeaders">
+        <a class="anchor" href="#UppercaseScheduleHeaders" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Nomenclatures - En-têtes en MAJUSCULES</h2>
+          <div class="meta"><code>UppercaseScheduleHeaders</code><span class="tag">Renommer</span> <span class="tag">Nomenclatures</span></div>
+          <p>Renomme les en-têtes de toutes les nomenclatures en MAJUSCULES.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Schedules - UPPERCASE headers</h2>
+          <div class="meta"><code>UppercaseScheduleHeaders</code><span class="tag">Rename</span> <span class="tag">Schedules</span></div>
+          <p>Renames the headers of all schedules in UPPERCASE.</p>
+        </div>
+      </article>
+
+      <article class="command" id="O3_2025A_TP4A">
+        <a class="anchor" href="#O3_2025A_TP4A" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>O3 Corriger TP4A - Préparation</h2>
+          <div class="meta"><code>O3_2025A_TP4A</code><span class="tag">Outils de correction</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Cours O3</span></div>
+          <p><em>Description à compléter.</em></p>
+        </div>
+        <div class="lang lang-en">
+          <h2>O3 Grade TP4A - Preparation</h2>
+          <div class="meta"><code>O3_2025A_TP4A</code><span class="tag">Grading Tools</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Course O3</span></div>
+          <p><em>Description to be completed.</em></p>
+        </div>
+      </article>
+
+      <article class="command" id="O3_2025A_TP4B">
+        <a class="anchor" href="#O3_2025A_TP4B" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>O3 Corriger TP4B - Liaison plans</h2>
+          <div class="meta"><code>O3_2025A_TP4B</code><span class="tag">Outils de correction</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Cours O3</span></div>
+          <p><em>Description à compléter.</em></p>
+        </div>
+        <div class="lang lang-en">
+          <h2>O3 Grade TP4B - Linked Plans</h2>
+          <div class="meta"><code>O3_2025A_TP4B</code><span class="tag">Grading Tools</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Course O3</span></div>
+          <p><em>Description to be completed.</em></p>
+        </div>
+      </article>
+
+      <article class="command" id="O3_2025A_TP4C">
+        <a class="anchor" href="#O3_2025A_TP4C" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>O3 Corriger TP4C - Construction</h2>
+          <div class="meta"><code>O3_2025A_TP4C</code><span class="tag">Outils de correction</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Cours O3</span></div>
+          <p><em>Description à compléter.</em></p>
+        </div>
+        <div class="lang lang-en">
+          <h2>O3 Grade TP4C - Construction</h2>
+          <div class="meta"><code>O3_2025A_TP4C</code><span class="tag">Grading Tools</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Course O3</span></div>
+          <p><em>Description to be completed.</em></p>
+        </div>
+      </article>
+
+      <article class="command" id="O3_2025A_TP4D">
+        <a class="anchor" href="#O3_2025A_TP4D" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>O3 Corriger TP4D - Pièces</h2>
+          <div class="meta"><code>O3_2025A_TP4D</code><span class="tag">Outils de correction</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Cours O3</span></div>
+          <p><em>Description à compléter.</em></p>
+        </div>
+        <div class="lang lang-en">
+          <h2>O3 Grade TP4D - Rooms</h2>
+          <div class="meta"><code>O3_2025A_TP4D</code><span class="tag">Grading Tools</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Course O3</span></div>
+          <p><em>Description to be completed.</em></p>
+        </div>
+      </article>
+
+      <article class="command" id="RenameGrids">
+        <a class="anchor" href="#RenameGrids" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Quadrillages - Renommer</h2>
+          <div class="meta"><code>RenameGrids</code><span class="tag">Renommer</span></div>
+          <p>Renomme les quadrillages comme dans Excel. Les quadrillages verrouillés ne seront pas modifiés.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Grids - Rename</h2>
+          <div class="meta"><code>RenameGrids</code><span class="tag">Rename</span></div>
+          <p>Renames grids like in Excel. Pinned grids will not be modified.</p>
+        </div>
+      </article>
+
+      <article class="command" id="RenameUsedMaterialAppearancesLikeMaterials">
+        <a class="anchor" href="#RenameUsedMaterialAppearancesLikeMaterials" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Renommer les apparences comme les matériaux</h2>
+          <div class="meta"><code>RenameUsedMaterialAppearancesLikeMaterials</code><span class="tag">Matériaux</span></div>
+          <p>Renomme les apparences de tous les matériaux utilisés dans le projet en appliquant le même nom que le matériau. Les apparences partagées seront ignorées.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Rename Appearances Like Materials</h2>
+          <div class="meta"><code>RenameUsedMaterialAppearancesLikeMaterials</code><span class="tag">Materials</span></div>
+          <p>Renames the appearances of all materials used in the project by applying the same name as the material. Shared appearances will be ignored.</p>
+        </div>
+      </article>
+
+      <article class="command" id="DimensionTextMoveInsideCropRegion">
+        <a class="anchor" href="#DimensionTextMoveInsideCropRegion" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Repositionner automatiquement le texte des dimensions dans le cadrage</h2>
+          <div class="meta"><code>DimensionTextMoveInsideCropRegion</code><span class="tag">Annotations</span></div>
+          <p>Repositionne le texte des dimensions sélectionnées à l&#x27;intérieur du cadrage de la vue (le plus proche de la position initiale). Cette commande permet d&#x27;éviter que le texte soit mal représenté en PDF (survient lorsque le texte est entre 2 zones). Fonctionne seulement avec les cotes dont les segments sont des lignes droites.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Automatically Reposition Dimension Text Inside Crop Region</h2>
+          <div class="meta"><code>DimensionTextMoveInsideCropRegion</code><span class="tag">Annotations</span></div>
+          <p>Repositions the text of selected dimensions inside the view crop region, as close as possible to its original position. This command helps prevent text from being incorrectly represented in PDFs, which can occur when the text is between two regions. Only works with dimensions whose segments are straight lines.</p>
+        </div>
+      </article>
+
+      <article class="command" id="DimensionTextMoveToPoint">
+        <a class="anchor" href="#DimensionTextMoveToPoint" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Repositionner le texte d&#x27;une dimension</h2>
+          <div class="meta"><code>DimensionTextMoveToPoint</code><span class="tag">Annotations</span></div>
+          <p>Permet de repositionner manuellement le texte d&#x27;une dimension sélectionnée. Utile pour les dimensions dont le texte est positionné entre 2 zones de cadrage. Dans cette situation, le texte d&#x27;une cote ne peut pas être déplacé avec la poignée standard.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Reposition Dimension Text</h2>
+          <div class="meta"><code>DimensionTextMoveToPoint</code><span class="tag">Annotations</span></div>
+          <p>Allows the text of a selected dimension to be manually repositioned. Useful for dimensions whose text is positioned between two crop regions. In this situation, the dimension text cannot be moved with the standard grip.</p>
+        </div>
+      </article>
+
+      <article class="command" id="SelectByPhase">
+        <a class="anchor" href="#SelectByPhase" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Sélectionner par phase</h2>
+          <div class="meta"><code>SelectByPhase</code><span class="tag">Sélectionner</span></div>
+          <p>Sélectionne tous les éléments du projet selon la phase spécifiée.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Select by Phase</h2>
+          <div class="meta"><code>SelectByPhase</code><span class="tag">Select</span></div>
+          <p>Selects all project elements according to the specified phase.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TransferRoomFinishesFinishesToIndexes">
+        <a class="anchor" href="#TransferRoomFinishesFinishesToIndexes" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Transférer les finitions de pièce (finitions &gt; index)</h2>
+          <div class="meta"><code>TransferRoomFinishesFinishesToIndexes</code><span class="tag">Nomenclatures</span></div>
+          <p>Transfère les finitions de pièce (Finition du sol, Finition du mur et Finition du plafond) dans les propriétés personnalisées &quot;Pièce finition index&quot;.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Transfer Room Finishes (finishes &gt; index)</h2>
+          <div class="meta"><code>TransferRoomFinishesFinishesToIndexes</code><span class="tag">Schedules</span></div>
+          <p>Transfers room finishes, including Floor Finish, Wall Finish, and Ceiling Finish, to the custom &quot;Pièce finition index&quot; properties.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TransferRoomFinishesIndexesToFinishes">
+        <a class="anchor" href="#TransferRoomFinishesIndexesToFinishes" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Transférer les finitions de pièce (index &gt; finitions)</h2>
+          <div class="meta"><code>TransferRoomFinishesIndexesToFinishes</code><span class="tag">Nomenclatures</span></div>
+          <p>Transfère les index utilisés dans les propriétés personnalisées &quot;Pièce finition index&quot; dans les propriétés par défaut de finition des pièces (Finition du sol, Finition du mur et Finition du plafond).</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Transfer Room Finishes (index &gt; finishes)</h2>
+          <div class="meta"><code>TransferRoomFinishesIndexesToFinishes</code><span class="tag">Schedules</span></div>
+          <p>Transfers the indexes used in the custom &quot;Pièce finition index&quot; properties to the default room finish properties: Floor Finish, Wall Finish, and Ceiling Finish.</p>
+        </div>
+      </article>
+
+      <article class="command" id="WallTypesRemoveCoarseScaleFillPattern">
+        <a class="anchor" href="#WallTypesRemoveCoarseScaleFillPattern" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Types de mur - Retirer Motif vue détail faible</h2>
+          <div class="meta"><code>WallTypesRemoveCoarseScaleFillPattern</code><span class="tag">Matériaux</span></div>
+          <p>Ajuste la propriété Motif vue détail faible des types de mur à &lt;Aucun motif&gt;.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Wall Types - Remove Coarse Scale Fill Pattern</h2>
+          <div class="meta"><code>WallTypesRemoveCoarseScaleFillPattern</code><span class="tag">Materials</span></div>
+          <p>Sets the Coarse Scale Fill Pattern property of wall types to &lt;No pattern&gt;.</p>
+        </div>
+      </article>
+
+      <article class="command" id="ListUsedMaterialsWithMissingTextures">
+        <a class="anchor" href="#ListUsedMaterialsWithMissingTextures" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Vérifier les textures des matériaux</h2>
+          <div class="meta"><code>ListUsedMaterialsWithMissingTextures</code><span class="tag">Matériaux</span></div>
+          <p>Vérifie les textures de tous les matériaux utilisés dans le projet. Un journal détaillé sera créé pour répertorier les textures manquantes s&#x27;il y a lieu.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Check Material Textures</h2>
+          <div class="meta"><code>ListUsedMaterialsWithMissingTextures</code><span class="tag">Materials</span></div>
+          <p>Checks the textures of all materials used in the project. A detailed log will be created to list missing textures, if any.</p>
+        </div>
+      </article>
+
+      <article class="command" id="ZoomSelection">
+        <a class="anchor" href="#ZoomSelection" aria-label="Lien direct">#</a>
+        <div class="lang lang-fr">
+          <h2>Zoom sélection</h2>
+          <div class="meta"><code>ZoomSelection</code><span class="tag">Navigation</span></div>
+          <p>Ajuste la vue active en fonction des éléments sélectionnés.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Zoom Selection</h2>
+          <div class="meta"><code>ZoomSelection</code><span class="tag">Navigation</span></div>
+          <p>Adjusts the active view to the selected elements.</p>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <script>
+    function setLanguage(lang) {
+      document.body.dataset.lang = lang;
+      document.documentElement.lang = lang;
+      localStorage.setItem("teco-help-language", lang);
+
+      document.getElementById("btn-fr").classList.toggle("active", lang === "fr");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const lang =
+      params.get("lang") ||
+      localStorage.getItem("teco-help-language") ||
+      (navigator.language && navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en");
+
+    setLanguage(lang === "en" ? "en" : "fr");
+  </script>
+</body>
+</html>
