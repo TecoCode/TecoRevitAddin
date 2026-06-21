@@ -217,6 +217,11 @@
 
     <section>
       
+      <div id="command-not-found" style="display:none;" class="command">
+        <h2>Commande introuvable</h2>
+        <p>L’aide demandée n’existe pas encore pour cette commande.</p>
+      </div>
+
       <article class="command" id="ViewTitlesAdjustExtensionLineLength">
         <a class="anchor" href="#ViewTitlesAdjustExtensionLineLength" aria-label="Lien direct">#</a>
         <div class="lang lang-fr">
@@ -580,6 +585,29 @@
       document.getElementById("btn-en").classList.toggle("active", lang === "en");
     }
 
+    function scrollToHash() {
+      const message = document.getElementById("command-not-found");
+
+      if (message)
+        message.style.display = "none";
+
+      if (!window.location.hash)
+        return;
+
+      const id = decodeURIComponent(window.location.hash.substring(1));
+      const target = document.getElementById(id);
+
+      if (target) {
+        target.scrollIntoView({ behavior: "auto", block: "start" });
+        return;
+      }
+
+      if (message) {
+        message.style.display = "block";
+        message.scrollIntoView({ behavior: "auto", block: "start" });
+      }
+    }
+
     const params = new URLSearchParams(window.location.search);
     const lang =
       params.get("lang") ||
@@ -587,6 +615,10 @@
       (navigator.language && navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en");
 
     setLanguage(lang === "en" ? "en" : "fr");
+
+    window.addEventListener("load", () => {
+      setTimeout(scrollToHash, 100);
+    });
   </script>
 </body>
 </html>
