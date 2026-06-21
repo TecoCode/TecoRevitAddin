@@ -128,6 +128,20 @@
       margin: 14px 0 0;
     }
 
+    .command-missing {
+      display: none;
+      border-color: #d93025;
+      background: #fff4f4;
+    }
+    
+    .command-missing h2 {
+      color: #b00020;
+    }
+    
+    .command-missing p {
+      color: #7a1c1c;
+    }
+
     .meta {
       display: flex;
       gap: 8px;
@@ -217,10 +231,23 @@
 
     <section>
       
-      <div id="command-not-found" style="display:none;" class="command">
-        <h2>Commande introuvable</h2>
-        <p>L’aide demandée n’existe pas encore pour cette commande.</p>
-      </div>
+      <article id="command-not-found" class="command command-missing">
+        <div class="lang lang-fr">
+          <h2>Commande introuvable</h2>
+          <p>
+            L’aide demandée n’existe pas encore pour la commande :
+            <code id="missing-command-id-fr"></code>
+          </p>
+        </div>
+      
+        <div class="lang lang-en">
+          <h2>Command not found</h2>
+          <p>
+            Help is not available yet for this command:
+            <code id="missing-command-id-en"></code>
+          </p>
+        </div>
+      </article>
 
       <article class="command" id="ViewTitlesAdjustExtensionLineLength">
         <a class="anchor" href="#ViewTitlesAdjustExtensionLineLength" aria-label="Lien direct">#</a>
@@ -580,44 +607,51 @@
       document.body.dataset.lang = lang;
       document.documentElement.lang = lang;
       localStorage.setItem("teco-help-language", lang);
-
+  
       document.getElementById("btn-fr").classList.toggle("active", lang === "fr");
       document.getElementById("btn-en").classList.toggle("active", lang === "en");
     }
-
+  
     function scrollToHash() {
       const message = document.getElementById("command-not-found");
-
+  
       if (message)
         message.style.display = "none";
-
+  
       if (!window.location.hash)
         return;
-
+  
       const id = decodeURIComponent(window.location.hash.substring(1));
       const target = document.getElementById(id);
-
+  
       if (target) {
         target.scrollIntoView({ behavior: "auto", block: "start" });
         return;
       }
-
+  
+      document.getElementById("missing-command-id-fr").textContent = id;
+      document.getElementById("missing-command-id-en").textContent = id;
+  
       if (message) {
         message.style.display = "block";
         message.scrollIntoView({ behavior: "auto", block: "start" });
       }
     }
-
+  
     const params = new URLSearchParams(window.location.search);
     const lang =
       params.get("lang") ||
       localStorage.getItem("teco-help-language") ||
       (navigator.language && navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en");
-
+  
     setLanguage(lang === "en" ? "en" : "fr");
-
+  
     window.addEventListener("load", () => {
       setTimeout(scrollToHash, 100);
+    });
+  
+    window.addEventListener("hashchange", () => {
+      scrollToHash();
     });
   </script>
 </body>
