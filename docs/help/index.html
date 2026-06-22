@@ -255,12 +255,8 @@
     <nav>
       <h2 class="lang lang-fr">Commandes</h2>
       <h2 class="lang lang-en">Commands</h2>
-      <ul class="toc-fr">
-        <li><a href="#ViewTitlesAdjustExtensionLineLength">Bulles titre de vue - Ajuster longueur ligne extension</a></li><li><a href="#ViewTitlesMoveToSheetBottomRightCorner">Bulles titre de vue - Au coin inférieur droit de la feuille</a></li><li><a href="#ViewTitlesMoveToViewBottomRightCorner">Bulles titre de vue - Au coin inférieur droit des fenêtres</a></li><li><a href="#ChangeSheetTitleBlock">Changer le cartouche des feuilles</a></li><li><a href="#Datasmith2026PatchFileOnly">Corriger fichier Datasmith 2026</a></li><li><a href="#Datasmith2026ExportAndPatchFile">Exporter et corriger fichier Datasmith 2026</a></li><li><a href="#FormatAndCleanTextNotes">Formatter et nettoyer notes textuelles</a></li><li><a href="#InitializeNoteViewParameter">Initialiser le paramètre Vue des notes</a></li><li><a href="#UpdateTotalSheetCount">Mettre à jour le nombre de feuilles total</a></li><li><a href="#UpdateDoorScheduleRooms">Mettre à jour les pièces dans un tableau de portes</a></li><li><a href="#UppercaseScheduleHeaders">Nomenclatures - En-têtes en MAJUSCULES</a></li><li><a href="#O3_2025A_TP4A">O3 Corriger TP4A - Préparation</a></li><li><a href="#O3_2025A_TP4B">O3 Corriger TP4B - Liaison plans</a></li><li><a href="#O3_2025A_TP4C">O3 Corriger TP4C - Construction</a></li><li><a href="#O3_2025A_TP4D">O3 Corriger TP4D - Pièces</a></li><li><a href="#RenameGrids">Quadrillages - Renommer</a></li><li><a href="#RenameUsedMaterialAppearancesLikeMaterials">Renommer les apparences comme les matériaux</a></li><li><a href="#DimensionTextMoveInsideCropRegion">Repositionner automatiquement le texte des dimensions dans le cadrage</a></li><li><a href="#DimensionTextMoveToPoint">Repositionner le texte d&#x27;une dimension</a></li><li><a href="#SelectByPhase">Sélectionner par phase</a></li><li><a href="#TransferRoomFinishesFinishesToIndexes">Transférer les finitions de pièce (finitions &gt; index)</a></li><li><a href="#TransferRoomFinishesIndexesToFinishes">Transférer les finitions de pièce (index &gt; finitions)</a></li><li><a href="#WallTypesRemoveCoarseScaleFillPattern">Types de mur - Retirer Motif vue détail faible</a></li><li><a href="#ListUsedMaterialsWithMissingTextures">Vérifier les textures des matériaux</a></li><li><a href="#ZoomSelection">Zoom sélection</a></li>
-      </ul>
-      <ul class="toc-en">
-        <li><a href="#ViewTitlesAdjustExtensionLineLength">View titles - Adjust extension line length</a></li><li><a href="#ViewTitlesMoveToSheetBottomRightCorner">View titles - Bottom-right corner of the sheet</a></li><li><a href="#ViewTitlesMoveToViewBottomRightCorner">View titles - Bottom-right corner of viewports</a></li><li><a href="#ChangeSheetTitleBlock">Change Sheet Title Block</a></li><li><a href="#Datasmith2026PatchFileOnly">Patch Datasmith 2026 File</a></li><li><a href="#Datasmith2026ExportAndPatchFile">Export and Fix Datasmith 2026 File</a></li><li><a href="#FormatAndCleanTextNotes">Format and Clean Text Notes</a></li><li><a href="#InitializeNoteViewParameter">Initialize Note View Parameter</a></li><li><a href="#UpdateTotalSheetCount">Update Total Sheet Count</a></li><li><a href="#UpdateDoorScheduleRooms">Update Rooms in Door Schedule</a></li><li><a href="#UppercaseScheduleHeaders">Schedules - UPPERCASE headers</a></li><li><a href="#O3_2025A_TP4A">O3 Grade TP4A - Preparation</a></li><li><a href="#O3_2025A_TP4B">O3 Grade TP4B - Linked Plans</a></li><li><a href="#O3_2025A_TP4C">O3 Grade TP4C - Construction</a></li><li><a href="#O3_2025A_TP4D">O3 Grade TP4D - Rooms</a></li><li><a href="#RenameGrids">Grids - Rename</a></li><li><a href="#RenameUsedMaterialAppearancesLikeMaterials">Rename Appearances Like Materials</a></li><li><a href="#DimensionTextMoveInsideCropRegion">Automatically Reposition Dimension Text Inside Crop Region</a></li><li><a href="#DimensionTextMoveToPoint">Reposition Dimension Text</a></li><li><a href="#SelectByPhase">Select by Phase</a></li><li><a href="#TransferRoomFinishesFinishesToIndexes">Transfer Room Finishes (finishes &gt; index)</a></li><li><a href="#TransferRoomFinishesIndexesToFinishes">Transfer Room Finishes (index &gt; finishes)</a></li><li><a href="#WallTypesRemoveCoarseScaleFillPattern">Wall Types - Remove Coarse Scale Fill Pattern</a></li><li><a href="#ListUsedMaterialsWithMissingTextures">Check Material Textures</a></li><li><a href="#ZoomSelection">Zoom Selection</a></li>
-      </ul>
+      <ul id="toc-fr"></ul>
+      <ul id="toc-en"></ul>
     </nav>
 
     <section>
@@ -670,6 +666,42 @@
       document.getElementById("btn-fr").classList.toggle("active", lang === "fr");
       document.getElementById("btn-en").classList.toggle("active", lang === "en");
     }
+
+    function buildToc()
+    {
+        const tocFr = document.getElementById("toc-fr");
+        const tocEn = document.getElementById("toc-en");
+    
+        tocFr.innerHTML = "";
+        tocEn.innerHTML = "";
+    
+        document.querySelectorAll("article.command").forEach(article =>
+        {
+            if (article.id === "command-not-found")
+                return;
+    
+            const id = article.id;
+            const editions = article.dataset.editions ?? "";
+    
+            const frTitle =
+                article.querySelector(".lang-fr h2")?.textContent ?? id;
+    
+            const enTitle =
+                article.querySelector(".lang-en h2")?.textContent ?? id;
+    
+            tocFr.insertAdjacentHTML(
+                "beforeend",
+                `<li class="toc-item" data-editions="${editions}">
+                    <a href="#${id}">${frTitle}</a>
+                 </li>`);
+    
+            tocEn.insertAdjacentHTML(
+                "beforeend",
+                `<li class="toc-item" data-editions="${editions}">
+                    <a href="#${id}">${enTitle}</a>
+                 </li>`);
+        });
+    }
   
     function scrollToHash() {
       const message = document.getElementById("command-not-found");
@@ -698,6 +730,7 @@
     }
 
     setLanguage(lang === "en" ? "en" : "fr");
+    buildToc();
     applyEditionFilter();
   
     window.addEventListener("load", () => {
