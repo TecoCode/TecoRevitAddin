@@ -700,6 +700,22 @@
                  </li>`);
         });
     }
+
+    function scrollElementIntoSection(element) {
+      const container = document.querySelector("section");
+      if (!container || !element)
+        return;
+    
+      const containerTop = container.getBoundingClientRect().top;
+      const elementTop = element.getBoundingClientRect().top;
+    
+      const padding = 16;
+    
+      container.scrollTo({
+        top: container.scrollTop + elementTop - containerTop - padding,
+        behavior: "auto"
+      });
+    }
   
     function scrollToHash() {
       const message = document.getElementById("command-not-found");
@@ -714,13 +730,7 @@
       const target = document.getElementById(id);
   
       if (target && target.style.display !== "none") {
-        const container = document.querySelector("section");
-      
-        container.scrollTo({
-          top: Math.max(0, target.offsetTop - 10),
-          behavior: "auto"
-        });
-      
+        scrollElementIntoSection(target);
         return;
       }
   
@@ -729,13 +739,7 @@
   
       if (message) {
         message.style.display = "block";
-      
-        const container = document.querySelector("section");
-      
-        container.scrollTo({
-          top: Math.max(0, target.offsetTop - 10),
-          behavior: "auto"
-        });
+        scrollElementIntoSection(message);
       }
     }
 
