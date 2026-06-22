@@ -656,6 +656,11 @@
         article.style.display =
           commandIsAvailableForEdition(article, edition) ? "" : "none";
       });
+    
+      document.querySelectorAll(".toc-item").forEach(item => {
+        item.style.display =
+          commandIsAvailableForEdition(item, edition) ? "" : "none";
+      });
     }
     
     function setLanguage(lang) {
