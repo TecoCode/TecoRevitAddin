@@ -6,6 +6,7 @@
   <title>Aide des commandes - Teco Revit</title>
   <style>
     :root {
+      --header-height: 120px;
       --bg: #f6f7f8;
       --panel: #ffffff;
       --text: #1f2328;
@@ -30,6 +31,8 @@
     }
 
     header {
+      height: var(--header-height);
+      box-sizing: border-box;
       background: var(--panel);
       border-bottom: 1px solid var(--border);
       padding: 16px 32px;
@@ -74,8 +77,12 @@
       color: white;
     }
 
+    section {
+      min-height: calc(100vh - var(--header-height) - 48px);
+    }
+
     main {
-      height: calc(100vh - 100px);
+      height: calc(100vh - var(--header-height));
       overflow-y: auto;
       display: grid;
       grid-template-columns: minmax(230px, 310px) minmax(0, 1fr);
@@ -83,18 +90,20 @@
       padding: 24px 32px;
       max-width: 1280px;
       margin: 0 auto;
+      box-sizing: border-box;
     }
 
     nav {
       align-self: start;
       position: sticky;
       top: 0;
+      max-height: calc(100vh - var(--header-height) - 48px);
+      overflow: auto;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 16px;
-      max-height: calc(100vh - 138px);
-      overflow: auto;
+      box-sizing: border-box;
     }
 
     nav h2 {
@@ -199,21 +208,27 @@
     }
 
     @media (max-width: 800px) {
-      header {
-        position: static;
+      body {
+        overflow: auto;
       }
-
+    
+      header {
+        height: auto;
+        display: block;
+      }
+    
       main {
+        height: auto;
         display: block;
         padding: 16px;
       }
-
+    
       nav {
         position: static;
         margin-bottom: 16px;
         max-height: none;
       }
-
+    
       .command {
         scroll-margin-top: 20px;
       }
