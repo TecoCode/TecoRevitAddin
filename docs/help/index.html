@@ -15,8 +15,14 @@
       --accent: #5b4aa8;
     }
 
+    html,
+    body {
+      height: 100%;
+    }
+    
     body {
       margin: 0;
+      overflow: hidden;
       font-family: "Segoe UI", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
@@ -26,10 +32,23 @@
     header {
       background: var(--panel);
       border-bottom: 1px solid var(--border);
-      padding: 24px 32px;
-      position: static;
-      top: 0;
+      padding: 16px 32px;
       z-index: 10;
+    
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    .header-text h1 {
+      margin: 0 0 6px;
+      font-size: 1.65rem;
+    }
+    
+    .header-text p {
+      margin: 0;
+      color: var(--muted);
     }
 
     header h1 {
@@ -43,10 +62,11 @@
     }
 
     .language-switch {
-      margin-top: 14px;
+      margin-top: 0;
       display: flex;
       gap: 8px;
       align-items: center;
+      flex-shrink: 0;
     }
 
     button {
@@ -65,6 +85,8 @@
     }
 
     main {
+      height: calc(100vh - 90px);
+      overflow-y: auto;
       display: grid;
       grid-template-columns: minmax(230px, 310px) minmax(0, 1fr);
       gap: 24px;
@@ -76,12 +98,12 @@
     nav {
       align-self: start;
       position: sticky;
-      top: 24px;
+      top: 0;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 16px;
-      max-height: calc(100vh - 160px);
+      max-height: calc(100vh - 138px);
       overflow: auto;
     }
 
@@ -119,7 +141,7 @@
       border-radius: 8px;
       padding: 20px 22px;
       margin-bottom: 16px;
-      scroll-margin-top: 150px;
+      scroll-margin-top: 24px;
     }
 
     .command h2 {
@@ -209,11 +231,13 @@
 </head>
 <body data-lang="fr">
   <header>
-    <h1 class="lang lang-fr">Aide des commandes Teco Revit</h1>
-    <h1 class="lang lang-en">Teco Revit Command Help</h1>
-    <p class="lang lang-fr">Page d'aide générée à partir du fichier <code>TecoRevitCore.commandsinfo.json</code>.</p>
-    <p class="lang lang-en">Help page generated from the <code>TecoRevitCore.commandsinfo.json</code> file.</p>
-
+    <div class="header-text">
+      <h1 class="lang lang-fr">Aide des commandes Teco Revit</h1>
+      <h1 class="lang lang-en">Teco Revit Command Help</h1>
+      <p class="lang lang-fr">Page d'aide générée à partir du fichier <code>TecoRevitCore.commandsinfo.json</code>.</p>
+      <p class="lang lang-en">Help page generated from the <code>TecoRevitCore.commandsinfo.json</code> file.</p>
+    </div>
+  
     <div class="language-switch" aria-label="Language">
       <button type="button" id="btn-fr" onclick="setLanguage('fr')">Français</button>
       <button type="button" id="btn-en" onclick="setLanguage('en')">English</button>
@@ -560,7 +584,7 @@
         </div>
       </article>
 
-      <article class="command" id="WallTypesRemoveCoarseScaleFillPattern" data-editions="full" data-editions="full student">
+      <article class="command" id="WallTypesRemoveCoarseScaleFillPattern" data-editions="full student">
         <a class="anchor" href="#WallTypesRemoveCoarseScaleFillPattern" aria-label="Lien direct">#</a>
         <div class="lang lang-fr">
           <h2>Types de mur - Retirer Motif vue détail faible</h2>
