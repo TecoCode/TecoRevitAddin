@@ -77,13 +77,8 @@
       color: white;
     }
 
-    section {
-      min-height: calc(100vh - var(--header-height) - 48px);
-    }
-
     main {
       height: calc(100vh - var(--header-height));
-      overflow-y: auto;
       display: grid;
       grid-template-columns: minmax(230px, 310px) minmax(0, 1fr);
       gap: 24px;
@@ -91,19 +86,23 @@
       max-width: 1280px;
       margin: 0 auto;
       box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    section {
+      height: 100%;
+      overflow-y: auto;
+      box-sizing: border-box;
     }
 
     nav {
-      align-self: start;
-      position: sticky;
-      top: 0;
-      max-height: calc(100vh - var(--header-height) - 48px);
-      overflow: auto;
+      height: 100%;
+      overflow-y: auto;
+      box-sizing: border-box;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 16px;
-      box-sizing: border-box;
     }
 
     nav h2 {
