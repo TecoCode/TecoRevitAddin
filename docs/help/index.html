@@ -51,16 +51,6 @@
       color: var(--muted);
     }
 
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 1.65rem;
-    }
-
-    header p {
-      margin: 0;
-      color: var(--muted);
-    }
-
     .language-switch {
       margin-top: 0;
       display: flex;
@@ -85,7 +75,7 @@
     }
 
     main {
-      height: calc(100vh - 90px);
+      height: calc(100vh - 100px);
       overflow-y: auto;
       display: grid;
       grid-template-columns: minmax(230px, 310px) minmax(0, 1fr);
@@ -119,15 +109,16 @@
     }
 
     nav li {
-      margin: 6px 0;
+      margin: 8px 0;
     }
     
     nav a {
       display: block;
-      padding: 3px 6px;
+      padding: 5px 8px;
       color: var(--text);
       text-decoration: none;
       border-radius: 4px;
+      line-height: 1.35;
     }
 
     nav a:hover {
