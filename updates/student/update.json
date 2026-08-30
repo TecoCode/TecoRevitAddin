@@ -1,0 +1,9 @@
+{
+        "latestVersion": "1.0.0",
+        "minimumVersion": "1.0.0",
+        "packageFileName": "TecoRevitAddin_Student_Update_1.0.0.zip",
+        "packageUrl": "https://raw.githubusercontent.com/TecoCode/TecoRevitAddin/main/updates/student/package/TecoRevitAddin_Student_Update_1.0.0.zip",
+        "releaseNotes": [
+          "Mise à jour du plugin Revit."
+        ]
+      }
