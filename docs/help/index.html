@@ -6,6 +6,7 @@
   <title>Aide des commandes - Teco Revit</title>
   <style>
     :root {
+      --header-height: 100px;
       --bg: #f6f7f8;
       --panel: #ffffff;
       --text: #1f2328;
@@ -15,8 +16,14 @@
       --accent: #5b4aa8;
     }
 
+    html,
+    body {
+      height: 100%;
+    }
+    
     body {
       margin: 0;
+      overflow: hidden;
       font-family: "Segoe UI", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
@@ -24,29 +31,35 @@
     }
 
     header {
+      height: var(--header-height);
+      box-sizing: border-box;
       background: var(--panel);
       border-bottom: 1px solid var(--border);
-      padding: 24px 32px;
-      position: sticky;
-      top: 0;
+      padding: 16px 32px;
       z-index: 10;
+    
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
     }
-
-    header h1 {
-      margin: 0 0 8px;
+    
+    .header-text h1 {
+      margin: 0 0 6px;
       font-size: 1.65rem;
     }
-
-    header p {
+    
+    .header-text p {
       margin: 0;
       color: var(--muted);
     }
 
     .language-switch {
-      margin-top: 14px;
+      margin-top: 0;
       display: flex;
       gap: 8px;
       align-items: center;
+      flex-shrink: 0;
     }
 
     button {
@@ -65,24 +78,33 @@
     }
 
     main {
+      height: calc(100vh - var(--header-height));
       display: grid;
-      grid-template-columns: minmax(230px, 310px) minmax(0, 1fr);
+      grid-template-columns: 340px minmax(0, 1fr);
       gap: 24px;
       padding: 24px 32px;
       max-width: 1280px;
       margin: 0 auto;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    section {
+      height: 100%;
+      overflow-y: auto;
+      box-sizing: border-box;
+      padding-right: 20px;
     }
 
     nav {
-      align-self: start;
-      position: sticky;
-      top: 126px;
+      height: 100%;
+      overflow-y: auto;
+      box-sizing: border-box;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 16px;
-      max-height: calc(100vh - 160px);
-      overflow: auto;
+      padding-right: 28px;
     }
 
     nav h2 {
@@ -97,12 +119,16 @@
     }
 
     nav li {
-      margin: 4px 0;
+      margin: 8px 0;
     }
-
+    
     nav a {
+      display: block;
+      padding: 5px 8px;
       color: var(--text);
       text-decoration: none;
+      border-radius: 4px;
+      line-height: 1.35;
     }
 
     nav a:hover {
@@ -116,7 +142,7 @@
       border-radius: 8px;
       padding: 20px 22px;
       margin-bottom: 16px;
-      scroll-margin-top: 150px;
+      scroll-margin-top: 24px;
     }
 
     .command h2 {
@@ -183,21 +209,27 @@
     }
 
     @media (max-width: 800px) {
-      header {
-        position: static;
+      body {
+        overflow: auto;
       }
-
+    
+      header {
+        height: auto;
+        display: block;
+      }
+    
       main {
+        height: auto;
         display: block;
         padding: 16px;
       }
-
+    
       nav {
         position: static;
         margin-bottom: 16px;
         max-height: none;
       }
-
+    
       .command {
         scroll-margin-top: 20px;
       }
@@ -206,11 +238,13 @@
 </head>
 <body data-lang="fr">
   <header>
-    <h1 class="lang lang-fr">Aide des commandes Teco Revit</h1>
-    <h1 class="lang lang-en">Teco Revit Command Help</h1>
-    <p class="lang lang-fr">Page d'aide générée à partir du fichier <code>TecoRevitCore.commandsinfo.json</code>.</p>
-    <p class="lang lang-en">Help page generated from the <code>TecoRevitCore.commandsinfo.json</code> file.</p>
-
+    <div class="header-text">
+      <h1 class="lang lang-fr">Aide des commandes Teco Revit</h1>
+      <h1 class="lang lang-en">Teco Revit Command Help</h1>
+      <p class="lang lang-fr">Page d'aide générée à partir du fichier <code>TecoRevitCore.commandsinfo.json</code>.</p>
+      <p class="lang lang-en">Help page generated from the <code>TecoRevitCore.commandsinfo.json</code> file.</p>
+    </div>
+  
     <div class="language-switch" aria-label="Language">
       <button type="button" id="btn-fr" onclick="setLanguage('fr')">Français</button>
       <button type="button" id="btn-en" onclick="setLanguage('en')">English</button>
@@ -221,12 +255,8 @@
     <nav>
       <h2 class="lang lang-fr">Commandes</h2>
       <h2 class="lang lang-en">Commands</h2>
-      <ul class="toc-fr">
-        <li><a href="#ViewTitlesAdjustExtensionLineLength">Bulles titre de vue - Ajuster longueur ligne extension</a></li><li><a href="#ViewTitlesMoveToSheetBottomRightCorner">Bulles titre de vue - Au coin inférieur droit de la feuille</a></li><li><a href="#ViewTitlesMoveToViewBottomRightCorner">Bulles titre de vue - Au coin inférieur droit des fenêtres</a></li><li><a href="#ChangeSheetTitleBlock">Changer le cartouche des feuilles</a></li><li><a href="#Datasmith2026PatchFileOnly">Corriger fichier Datasmith 2026</a></li><li><a href="#Datasmith2026ExportAndPatchFile">Exporter et corriger fichier Datasmith 2026</a></li><li><a href="#FormatAndCleanTextNotes">Formatter et nettoyer notes textuelles</a></li><li><a href="#InitializeNoteViewParameter">Initialiser le paramètre Vue des notes</a></li><li><a href="#UpdateTotalSheetCount">Mettre à jour le nombre de feuilles total</a></li><li><a href="#UpdateDoorScheduleRooms">Mettre à jour les pièces dans un tableau de portes</a></li><li><a href="#UppercaseScheduleHeaders">Nomenclatures - En-têtes en MAJUSCULES</a></li><li><a href="#O3_2025A_TP4A">O3 Corriger TP4A - Préparation</a></li><li><a href="#O3_2025A_TP4B">O3 Corriger TP4B - Liaison plans</a></li><li><a href="#O3_2025A_TP4C">O3 Corriger TP4C - Construction</a></li><li><a href="#O3_2025A_TP4D">O3 Corriger TP4D - Pièces</a></li><li><a href="#RenameGrids">Quadrillages - Renommer</a></li><li><a href="#RenameUsedMaterialAppearancesLikeMaterials">Renommer les apparences comme les matériaux</a></li><li><a href="#DimensionTextMoveInsideCropRegion">Repositionner automatiquement le texte des dimensions dans le cadrage</a></li><li><a href="#DimensionTextMoveToPoint">Repositionner le texte d&#x27;une dimension</a></li><li><a href="#SelectByPhase">Sélectionner par phase</a></li><li><a href="#TransferRoomFinishesFinishesToIndexes">Transférer les finitions de pièce (finitions &gt; index)</a></li><li><a href="#TransferRoomFinishesIndexesToFinishes">Transférer les finitions de pièce (index &gt; finitions)</a></li><li><a href="#WallTypesRemoveCoarseScaleFillPattern">Types de mur - Retirer Motif vue détail faible</a></li><li><a href="#ListUsedMaterialsWithMissingTextures">Vérifier les textures des matériaux</a></li><li><a href="#ZoomSelection">Zoom sélection</a></li>
-      </ul>
-      <ul class="toc-en">
-        <li><a href="#ViewTitlesAdjustExtensionLineLength">View titles - Adjust extension line length</a></li><li><a href="#ViewTitlesMoveToSheetBottomRightCorner">View titles - Bottom-right corner of the sheet</a></li><li><a href="#ViewTitlesMoveToViewBottomRightCorner">View titles - Bottom-right corner of viewports</a></li><li><a href="#ChangeSheetTitleBlock">Change Sheet Title Block</a></li><li><a href="#Datasmith2026PatchFileOnly">Patch Datasmith 2026 File</a></li><li><a href="#Datasmith2026ExportAndPatchFile">Export and Fix Datasmith 2026 File</a></li><li><a href="#FormatAndCleanTextNotes">Format and Clean Text Notes</a></li><li><a href="#InitializeNoteViewParameter">Initialize Note View Parameter</a></li><li><a href="#UpdateTotalSheetCount">Update Total Sheet Count</a></li><li><a href="#UpdateDoorScheduleRooms">Update Rooms in Door Schedule</a></li><li><a href="#UppercaseScheduleHeaders">Schedules - UPPERCASE headers</a></li><li><a href="#O3_2025A_TP4A">O3 Grade TP4A - Preparation</a></li><li><a href="#O3_2025A_TP4B">O3 Grade TP4B - Linked Plans</a></li><li><a href="#O3_2025A_TP4C">O3 Grade TP4C - Construction</a></li><li><a href="#O3_2025A_TP4D">O3 Grade TP4D - Rooms</a></li><li><a href="#RenameGrids">Grids - Rename</a></li><li><a href="#RenameUsedMaterialAppearancesLikeMaterials">Rename Appearances Like Materials</a></li><li><a href="#DimensionTextMoveInsideCropRegion">Automatically Reposition Dimension Text Inside Crop Region</a></li><li><a href="#DimensionTextMoveToPoint">Reposition Dimension Text</a></li><li><a href="#SelectByPhase">Select by Phase</a></li><li><a href="#TransferRoomFinishesFinishesToIndexes">Transfer Room Finishes (finishes &gt; index)</a></li><li><a href="#TransferRoomFinishesIndexesToFinishes">Transfer Room Finishes (index &gt; finishes)</a></li><li><a href="#WallTypesRemoveCoarseScaleFillPattern">Wall Types - Remove Coarse Scale Fill Pattern</a></li><li><a href="#ListUsedMaterialsWithMissingTextures">Check Material Textures</a></li><li><a href="#ZoomSelection">Zoom Selection</a></li>
-      </ul>
+      <ul id="toc-fr" class="toc-fr"></ul>
+      <ul id="toc-en" class="toc-en"></ul>
     </nav>
 
     <section>
@@ -249,8 +279,7 @@
         </div>
       </article>
 
-      <article class="command" id="ViewTitlesAdjustExtensionLineLength">
-        <a class="anchor" href="#ViewTitlesAdjustExtensionLineLength" aria-label="Lien direct">#</a>
+      <article class="command" id="ViewTitlesAdjustExtensionLineLength" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Bulles titre de vue - Ajuster longueur ligne extension</h2>
           <div class="meta"><code>ViewTitlesAdjustExtensionLineLength</code><span class="tag">Mise en page</span></div>
@@ -263,8 +292,7 @@
         </div>
       </article>
 
-      <article class="command" id="ViewTitlesMoveToSheetBottomRightCorner">
-        <a class="anchor" href="#ViewTitlesMoveToSheetBottomRightCorner" aria-label="Lien direct">#</a>
+      <article class="command" id="ViewTitlesMoveToSheetBottomRightCorner" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Bulles titre de vue - Au coin inférieur droit de la feuille</h2>
           <div class="meta"><code>ViewTitlesMoveToSheetBottomRightCorner</code><span class="tag">Mise en page</span></div>
@@ -277,8 +305,7 @@
         </div>
       </article>
 
-      <article class="command" id="ViewTitlesMoveToViewBottomRightCorner">
-        <a class="anchor" href="#ViewTitlesMoveToViewBottomRightCorner" aria-label="Lien direct">#</a>
+      <article class="command" id="ViewTitlesMoveToViewBottomRightCorner" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Bulles titre de vue - Au coin inférieur droit des fenêtres</h2>
           <div class="meta"><code>ViewTitlesMoveToViewBottomRightCorner</code><span class="tag">Mise en page</span></div>
@@ -291,8 +318,7 @@
         </div>
       </article>
 
-      <article class="command" id="ChangeSheetTitleBlock">
-        <a class="anchor" href="#ChangeSheetTitleBlock" aria-label="Lien direct">#</a>
+      <article class="command" id="ChangeSheetTitleBlock" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Changer le cartouche des feuilles</h2>
           <div class="meta"><code>ChangeSheetTitleBlock</code><span class="tag">Mise en page</span></div>
@@ -305,8 +331,7 @@
         </div>
       </article>
 
-      <article class="command" id="Datasmith2026PatchFileOnly">
-        <a class="anchor" href="#Datasmith2026PatchFileOnly" aria-label="Lien direct">#</a>
+      <article class="command" id="Datasmith2026PatchFileOnly" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Corriger fichier Datasmith 2026</h2>
           <div class="meta"><code>Datasmith2026PatchFileOnly</code><span class="tag">Twinmotion</span></div>
@@ -319,8 +344,7 @@
         </div>
       </article>
 
-      <article class="command" id="Datasmith2026ExportAndPatchFile">
-        <a class="anchor" href="#Datasmith2026ExportAndPatchFile" aria-label="Lien direct">#</a>
+      <article class="command" id="Datasmith2026ExportAndPatchFile" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Exporter et corriger fichier Datasmith 2026</h2>
           <div class="meta"><code>Datasmith2026ExportAndPatchFile</code><span class="tag">Twinmotion</span></div>
@@ -333,8 +357,7 @@
         </div>
       </article>
 
-      <article class="command" id="FormatAndCleanTextNotes">
-        <a class="anchor" href="#FormatAndCleanTextNotes" aria-label="Lien direct">#</a>
+      <article class="command" id="FormatAndCleanTextNotes" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Formatter et nettoyer notes textuelles</h2>
           <div class="meta"><code>FormatAndCleanTextNotes</code><span class="tag">Annotations</span> <span class="tag">Mise en page</span></div>
@@ -347,8 +370,7 @@
         </div>
       </article>
 
-      <article class="command" id="InitializeNoteViewParameter">
-        <a class="anchor" href="#InitializeNoteViewParameter" aria-label="Lien direct">#</a>
+      <article class="command" id="InitializeNoteViewParameter" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Initialiser le paramètre Vue des notes</h2>
           <div class="meta"><code>InitializeNoteViewParameter</code><span class="tag">Annotations</span></div>
@@ -361,8 +383,7 @@
         </div>
       </article>
 
-      <article class="command" id="UpdateTotalSheetCount">
-        <a class="anchor" href="#UpdateTotalSheetCount" aria-label="Lien direct">#</a>
+      <article class="command" id="UpdateTotalSheetCount" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Mettre à jour le nombre de feuilles total</h2>
           <div class="meta"><code>UpdateTotalSheetCount</code><span class="tag">Mise en page</span></div>
@@ -375,8 +396,7 @@
         </div>
       </article>
 
-      <article class="command" id="UpdateDoorScheduleRooms">
-        <a class="anchor" href="#UpdateDoorScheduleRooms" aria-label="Lien direct">#</a>
+      <article class="command" id="UpdateDoorScheduleRooms" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Mettre à jour les pièces dans un tableau de portes</h2>
           <div class="meta"><code>UpdateDoorScheduleRooms</code><span class="tag">Nomenclatures</span></div>
@@ -389,8 +409,7 @@
         </div>
       </article>
 
-      <article class="command" id="UppercaseScheduleHeaders">
-        <a class="anchor" href="#UppercaseScheduleHeaders" aria-label="Lien direct">#</a>
+      <article class="command" id="UppercaseScheduleHeaders" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Nomenclatures - En-têtes en MAJUSCULES</h2>
           <div class="meta"><code>UppercaseScheduleHeaders</code><span class="tag">Renommer</span> <span class="tag">Nomenclatures</span></div>
@@ -403,8 +422,7 @@
         </div>
       </article>
 
-      <article class="command" id="O3_2025A_TP4A">
-        <a class="anchor" href="#O3_2025A_TP4A" aria-label="Lien direct">#</a>
+      <article class="command" id="O3_2025A_TP4A" data-editions="full">
         <div class="lang lang-fr">
           <h2>O3 Corriger TP4A - Préparation</h2>
           <div class="meta"><code>O3_2025A_TP4A</code><span class="tag">Outils de correction</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Cours O3</span></div>
@@ -417,8 +435,7 @@
         </div>
       </article>
 
-      <article class="command" id="O3_2025A_TP4B">
-        <a class="anchor" href="#O3_2025A_TP4B" aria-label="Lien direct">#</a>
+      <article class="command" id="O3_2025A_TP4B" data-editions="full">
         <div class="lang lang-fr">
           <h2>O3 Corriger TP4B - Liaison plans</h2>
           <div class="meta"><code>O3_2025A_TP4B</code><span class="tag">Outils de correction</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Cours O3</span></div>
@@ -431,8 +448,7 @@
         </div>
       </article>
 
-      <article class="command" id="O3_2025A_TP4C">
-        <a class="anchor" href="#O3_2025A_TP4C" aria-label="Lien direct">#</a>
+      <article class="command" id="O3_2025A_TP4C" data-editions="full">
         <div class="lang lang-fr">
           <h2>O3 Corriger TP4C - Construction</h2>
           <div class="meta"><code>O3_2025A_TP4C</code><span class="tag">Outils de correction</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Cours O3</span></div>
@@ -445,8 +461,7 @@
         </div>
       </article>
 
-      <article class="command" id="O3_2025A_TP4D">
-        <a class="anchor" href="#O3_2025A_TP4D" aria-label="Lien direct">#</a>
+      <article class="command" id="O3_2025A_TP4D" data-editions="full">
         <div class="lang lang-fr">
           <h2>O3 Corriger TP4D - Pièces</h2>
           <div class="meta"><code>O3_2025A_TP4D</code><span class="tag">Outils de correction</span> <span class="tag">O3-2025A-TP4</span> <span class="tag">Cours O3</span></div>
@@ -459,8 +474,7 @@
         </div>
       </article>
 
-      <article class="command" id="RenameGrids">
-        <a class="anchor" href="#RenameGrids" aria-label="Lien direct">#</a>
+      <article class="command" id="RenameGrids" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Quadrillages - Renommer</h2>
           <div class="meta"><code>RenameGrids</code><span class="tag">Renommer</span></div>
@@ -473,8 +487,7 @@
         </div>
       </article>
 
-      <article class="command" id="RenameUsedMaterialAppearancesLikeMaterials">
-        <a class="anchor" href="#RenameUsedMaterialAppearancesLikeMaterials" aria-label="Lien direct">#</a>
+      <article class="command" id="RenameUsedMaterialAppearancesLikeMaterials" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Renommer les apparences comme les matériaux</h2>
           <div class="meta"><code>RenameUsedMaterialAppearancesLikeMaterials</code><span class="tag">Matériaux</span></div>
@@ -487,8 +500,7 @@
         </div>
       </article>
 
-      <article class="command" id="DimensionTextMoveInsideCropRegion">
-        <a class="anchor" href="#DimensionTextMoveInsideCropRegion" aria-label="Lien direct">#</a>
+      <article class="command" id="DimensionTextMoveInsideCropRegion" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Repositionner automatiquement le texte des dimensions dans le cadrage</h2>
           <div class="meta"><code>DimensionTextMoveInsideCropRegion</code><span class="tag">Annotations</span></div>
@@ -501,8 +513,7 @@
         </div>
       </article>
 
-      <article class="command" id="DimensionTextMoveToPoint">
-        <a class="anchor" href="#DimensionTextMoveToPoint" aria-label="Lien direct">#</a>
+      <article class="command" id="DimensionTextMoveToPoint" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Repositionner le texte d&#x27;une dimension</h2>
           <div class="meta"><code>DimensionTextMoveToPoint</code><span class="tag">Annotations</span></div>
@@ -515,8 +526,7 @@
         </div>
       </article>
 
-      <article class="command" id="SelectByPhase">
-        <a class="anchor" href="#SelectByPhase" aria-label="Lien direct">#</a>
+      <article class="command" id="SelectByPhase" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Sélectionner par phase</h2>
           <div class="meta"><code>SelectByPhase</code><span class="tag">Sélectionner</span></div>
@@ -529,8 +539,7 @@
         </div>
       </article>
 
-      <article class="command" id="TransferRoomFinishesFinishesToIndexes">
-        <a class="anchor" href="#TransferRoomFinishesFinishesToIndexes" aria-label="Lien direct">#</a>
+      <article class="command" id="TransferRoomFinishesFinishesToIndexes" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Transférer les finitions de pièce (finitions &gt; index)</h2>
           <div class="meta"><code>TransferRoomFinishesFinishesToIndexes</code><span class="tag">Nomenclatures</span></div>
@@ -543,8 +552,7 @@
         </div>
       </article>
 
-      <article class="command" id="TransferRoomFinishesIndexesToFinishes">
-        <a class="anchor" href="#TransferRoomFinishesIndexesToFinishes" aria-label="Lien direct">#</a>
+      <article class="command" id="TransferRoomFinishesIndexesToFinishes" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Transférer les finitions de pièce (index &gt; finitions)</h2>
           <div class="meta"><code>TransferRoomFinishesIndexesToFinishes</code><span class="tag">Nomenclatures</span></div>
@@ -557,8 +565,7 @@
         </div>
       </article>
 
-      <article class="command" id="WallTypesRemoveCoarseScaleFillPattern">
-        <a class="anchor" href="#WallTypesRemoveCoarseScaleFillPattern" aria-label="Lien direct">#</a>
+      <article class="command" id="WallTypesRemoveCoarseScaleFillPattern" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Types de mur - Retirer Motif vue détail faible</h2>
           <div class="meta"><code>WallTypesRemoveCoarseScaleFillPattern</code><span class="tag">Matériaux</span></div>
@@ -571,8 +578,7 @@
         </div>
       </article>
 
-      <article class="command" id="ListUsedMaterialsWithMissingTextures">
-        <a class="anchor" href="#ListUsedMaterialsWithMissingTextures" aria-label="Lien direct">#</a>
+      <article class="command" id="ListUsedMaterialsWithMissingTextures" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Vérifier les textures des matériaux</h2>
           <div class="meta"><code>ListUsedMaterialsWithMissingTextures</code><span class="tag">Matériaux</span></div>
@@ -585,8 +591,7 @@
         </div>
       </article>
 
-      <article class="command" id="ZoomSelection">
-        <a class="anchor" href="#ZoomSelection" aria-label="Lien direct">#</a>
+      <article class="command" id="ZoomSelection" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Zoom sélection</h2>
           <div class="meta"><code>ZoomSelection</code><span class="tag">Navigation</span></div>
@@ -603,6 +608,36 @@
   </main>
 
   <script>
+    const params = new URLSearchParams(window.location.search);
+    const edition = params.get("edition") || "full";
+    const lang =
+      params.get("lang") ||
+      localStorage.getItem("teco-help-language") ||
+      (navigator.language && navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en");
+
+    function commandIsAvailableForEdition(article, edition) {
+      const editions = (article.dataset.editions || "full student")
+        .split(/\s+/)
+        .filter(Boolean);
+    
+      return editions.includes(edition);
+    }
+    
+    function applyEditionFilter() {
+      document.querySelectorAll(".command").forEach(article => {
+        if (article.id === "command-not-found")
+          return;
+    
+        article.style.display =
+          commandIsAvailableForEdition(article, edition) ? "" : "none";
+      });
+    
+      document.querySelectorAll(".toc-item").forEach(item => {
+        item.style.display =
+          commandIsAvailableForEdition(item, edition) ? "" : "none";
+      });
+    }
+    
     function setLanguage(lang) {
       document.body.dataset.lang = lang;
       document.documentElement.lang = lang;
@@ -610,6 +645,76 @@
   
       document.getElementById("btn-fr").classList.toggle("active", lang === "fr");
       document.getElementById("btn-en").classList.toggle("active", lang === "en");
+    }
+
+    function buildArticleAnchors() {
+      document.querySelectorAll("article.command").forEach(article => {
+        if (article.id === "command-not-found")
+          return;
+    
+        if (article.querySelector(".anchor"))
+          return;
+    
+        const anchor = document.createElement("a");
+        anchor.className = "anchor";
+        anchor.href = "#" + encodeURIComponent(article.id);
+        anchor.setAttribute("aria-label", "Lien direct");
+        anchor.textContent = "#";
+    
+        article.prepend(anchor);
+      });
+    }
+    
+    function buildToc()
+    {
+        const tocFr = document.getElementById("toc-fr");
+        const tocEn = document.getElementById("toc-en");
+    
+        tocFr.innerHTML = "";
+        tocEn.innerHTML = "";
+    
+        document.querySelectorAll("article.command").forEach(article =>
+        {
+            if (article.id === "command-not-found")
+                return;
+    
+            const id = article.id;
+            const editions = article.dataset.editions ?? "";
+    
+            const frTitle =
+                article.querySelector(".lang-fr h2")?.textContent ?? id;
+    
+            const enTitle =
+                article.querySelector(".lang-en h2")?.textContent ?? id;
+    
+            tocFr.insertAdjacentHTML(
+                "beforeend",
+                `<li class="toc-item" data-editions="${editions}">
+                    <a href="#${id}">${frTitle}</a>
+                 </li>`);
+    
+            tocEn.insertAdjacentHTML(
+                "beforeend",
+                `<li class="toc-item" data-editions="${editions}">
+                    <a href="#${id}">${enTitle}</a>
+                 </li>`);
+        });
+    }
+
+    function scrollElementIntoSection(element) {
+      const container = document.querySelector("section");
+      if (!container || !element)
+        return;
+    
+      const containerTop = container.getBoundingClientRect().top;
+      const elementTop = element.getBoundingClientRect().top;
+    
+      const padding = 0;
+    
+      container.scrollTo({
+        top: container.scrollTop + elementTop - containerTop - padding,
+        behavior: "auto"
+      });
     }
   
     function scrollToHash() {
@@ -624,8 +729,8 @@
       const id = decodeURIComponent(window.location.hash.substring(1));
       const target = document.getElementById(id);
   
-      if (target) {
-        target.scrollIntoView({ behavior: "auto", block: "start" });
+      if (target && target.style.display !== "none") {
+        scrollElementIntoSection(target);
         return;
       }
   
@@ -634,23 +739,31 @@
   
       if (message) {
         message.style.display = "block";
-        message.scrollIntoView({ behavior: "auto", block: "start" });
+        scrollElementIntoSection(message);
       }
     }
-  
-    const params = new URLSearchParams(window.location.search);
-    const lang =
-      params.get("lang") ||
-      localStorage.getItem("teco-help-language") ||
-      (navigator.language && navigator.language.toLowerCase().startsWith("fr") ? "fr" : "en");
-  
+
     setLanguage(lang === "en" ? "en" : "fr");
+    buildArticleAnchors();
+    buildToc();
+    applyEditionFilter();
   
-    window.addEventListener("load", () => {
-      setTimeout(scrollToHash, 100);
+    requestAnimationFrame(() => {
+      scrollToHash();
     });
   
     window.addEventListener("hashchange", () => {
+      scrollToHash();
+    });
+
+    document.addEventListener("click", e => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link)
+        return;
+
+      e.preventDefault();
+      const id = decodeURIComponent(link.getAttribute("href").substring(1));
+      history.replaceState(null, "", "#" + encodeURIComponent(id));
       scrollToHash();
     });
   </script>
