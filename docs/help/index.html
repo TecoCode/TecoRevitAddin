@@ -279,68 +279,211 @@
         </div>
       </article>
 
-      <article class="command" id="ViewTitlesAdjustExtensionLineLength" data-editions="full student">
+      <article class="command" id="TCO_Dimension_MoveTextInsideCropRegion" data-editions="full student">
         <div class="lang lang-fr">
-          <h2>Bulles titre de vue - Ajuster longueur ligne extension</h2>
-          <div class="meta"><code>ViewTitlesAdjustExtensionLineLength</code><span class="tag">Mise en page</span></div>
-          <p>Ajuste la longueur de la ligne d&#x27;extension des bulles titre de vue en fonction du titre.</p>
+          <h2>Repositionner automatiquement le texte des dimensions dans le cadrage</h2>
+          <div class="meta"><code>TCO_Dimension_MoveTextInsideCropRegion</code><span class="tag">Annotations</span></div>
+          <p>Repositionne le texte des dimensions sélectionnées à l&#x27;intérieur du cadrage de la vue (le plus proche de la position initiale). Cette commande permet d&#x27;éviter que le texte soit mal représenté en PDF (survient lorsque le texte est entre 2 zones). Fonctionne seulement avec les cotes dont les segments sont des lignes droites.</p>
         </div>
         <div class="lang lang-en">
-          <h2>View titles - Adjust extension line length</h2>
-          <div class="meta"><code>ViewTitlesAdjustExtensionLineLength</code><span class="tag">Sheet</span></div>
-          <p>Adjusts the extension line length of view title bubbles based on the title.</p>
+          <h2>Automatically Reposition Dimension Text Inside Crop Region</h2>
+          <div class="meta"><code>TCO_Dimension_MoveTextInsideCropRegion</code><span class="tag">Annotations</span></div>
+          <p>Repositions the text of selected dimensions inside the view crop region, as close as possible to its original position. This command helps prevent text from being incorrectly represented in PDFs, which can occur when the text is between two regions. Only works with dimensions whose segments are straight lines.</p>
         </div>
       </article>
 
-      <article class="command" id="ViewTitlesMoveToSheetBottomRightCorner" data-editions="full student">
+      <article class="command" id="TCO_Dimension_MoveTextToPoint" data-editions="full student">
         <div class="lang lang-fr">
-          <h2>Bulles titre de vue - Au coin inférieur droit de la feuille</h2>
-          <div class="meta"><code>ViewTitlesMoveToSheetBottomRightCorner</code><span class="tag">Mise en page</span></div>
-          <p>Sélectionne le type en fonction de la taille de la feuille, ajuste la longueur de la ligne d&#x27;extension et déplace la bulle titre de vue au coin inférieur droit de la zone des vues. ATTENTION si cette commande est utilisée sur plusieurs fenêtres dans une même feuille, les bulles se superposeront. Seulement certaines cartouches sont actuellement supportées.</p>
+          <h2>Repositionner le texte d&#x27;une dimension</h2>
+          <div class="meta"><code>TCO_Dimension_MoveTextToPoint</code><span class="tag">Annotations</span></div>
+          <p>Permet de repositionner manuellement le texte d&#x27;une dimension sélectionnée. Utile pour les dimensions dont le texte est positionné entre 2 zones de cadrage. Dans cette situation, le texte d&#x27;une cote ne peut pas être déplacé avec la poignée standard.</p>
         </div>
         <div class="lang lang-en">
-          <h2>View titles - Bottom-right corner of the sheet</h2>
-          <div class="meta"><code>ViewTitlesMoveToSheetBottomRightCorner</code><span class="tag">Sheet</span></div>
-          <p>Selects the type based on the sheet size, adjusts the extension line length, and moves the view title bubble to the bottom-right corner of the view area. WARNING: if this command is used on multiple viewports on the same sheet, the bubbles will overlap. Only some title blocks are currently supported.</p>
+          <h2>Reposition Dimension Text</h2>
+          <div class="meta"><code>TCO_Dimension_MoveTextToPoint</code><span class="tag">Annotations</span></div>
+          <p>Allows the text of a selected dimension to be manually repositioned. Useful for dimensions whose text is positioned between two crop regions. In this situation, the dimension text cannot be moved with the standard grip.</p>
         </div>
       </article>
 
-      <article class="command" id="ViewTitlesMoveToViewBottomRightCorner" data-editions="full student">
+      <article class="command" id="TCO_Element_SelectByPhase" data-editions="full student">
         <div class="lang lang-fr">
-          <h2>Bulles titre de vue - Au coin inférieur droit des fenêtres</h2>
-          <div class="meta"><code>ViewTitlesMoveToViewBottomRightCorner</code><span class="tag">Mise en page</span></div>
-          <p>Sélectionne le type en fonction de la taille de la feuille, ajuste la longueur de la ligne d&#x27;extension et déplace les bulles titre de vue au coin inférieur droit des fenêtres.</p>
+          <h2>Sélectionner par phase</h2>
+          <div class="meta"><code>TCO_Element_SelectByPhase</code><span class="tag">Sélectionner</span></div>
+          <p>Sélectionne tous les éléments du projet selon la phase spécifiée.</p>
         </div>
         <div class="lang lang-en">
-          <h2>View titles - Bottom-right corner of viewports</h2>
-          <div class="meta"><code>ViewTitlesMoveToViewBottomRightCorner</code><span class="tag">Sheet</span></div>
-          <p>Selects the type based on the sheet size, adjusts the extension line length, and moves the view title bubbles to the bottom-right corner of the viewports.</p>
+          <h2>Select by Phase</h2>
+          <div class="meta"><code>TCO_Element_SelectByPhase</code><span class="tag">Select</span></div>
+          <p>Selects all project elements according to the specified phase.</p>
         </div>
       </article>
 
-      <article class="command" id="ChangeSheetTitleBlock" data-editions="full student">
+      <article class="command" id="TCO_Grid_Rename" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Quadrillages - Renommer</h2>
+          <div class="meta"><code>TCO_Grid_Rename</code><span class="tag">Renommer</span></div>
+          <p>Renomme les quadrillages comme dans Excel. Les quadrillages verrouillés ne seront pas modifiés.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Grids - Rename</h2>
+          <div class="meta"><code>TCO_Grid_Rename</code><span class="tag">Rename</span></div>
+          <p>Renames grids like in Excel. Pinned grids will not be modified.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_Material_ListUsedMaterialsWithMissingTextures" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Vérifier les textures des matériaux</h2>
+          <div class="meta"><code>TCO_Material_ListUsedMaterialsWithMissingTextures</code><span class="tag">Matériaux</span></div>
+          <p>Vérifie les textures de tous les matériaux utilisés dans le projet. Un journal détaillé sera créé pour répertorier les textures manquantes s&#x27;il y a lieu.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Check Material Textures</h2>
+          <div class="meta"><code>TCO_Material_ListUsedMaterialsWithMissingTextures</code><span class="tag">Materials</span></div>
+          <p>Checks the textures of all materials used in the project. A detailed log will be created to list missing textures, if any.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_Material_RenameUsedAppearancesLikeMaterials" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Renommer les apparences comme les matériaux</h2>
+          <div class="meta"><code>TCO_Material_RenameUsedAppearancesLikeMaterials</code><span class="tag">Matériaux</span></div>
+          <p>Renomme les apparences de tous les matériaux utilisés dans le projet en appliquant le même nom que le matériau. Les apparences partagées seront ignorées.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Rename Appearances Like Materials</h2>
+          <div class="meta"><code>TCO_Material_RenameUsedAppearancesLikeMaterials</code><span class="tag">Materials</span></div>
+          <p>Renames the appearances of all materials used in the project by applying the same name as the material. Shared appearances will be ignored.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_Schedule_UpdatePieceParameterInDoorSchedule" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Mettre à jour les pièces dans un tableau de portes</h2>
+          <div class="meta"><code>TCO_Schedule_UpdatePieceParameterInDoorSchedule</code><span class="tag">Nomenclatures</span></div>
+          <p>Met à jour la propriété Porte pièces en combinant DE @ À. Les pièces vides seront indiquées extérieures EXT.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Update Rooms in Door Schedule</h2>
+          <div class="meta"><code>TCO_Schedule_UpdatePieceParameterInDoorSchedule</code><span class="tag">Schedules</span></div>
+          <p>Updates the Porte pièces property by combining FROM @ TO. Empty rooms will be marked as exterior EXT.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_Schedule_UppercaseHeaders" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Nomenclatures - En-têtes en MAJUSCULES</h2>
+          <div class="meta"><code>TCO_Schedule_UppercaseHeaders</code><span class="tag">Renommer</span> <span class="tag">Nomenclatures</span></div>
+          <p>Renomme les en-têtes de toutes les nomenclatures en MAJUSCULES.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Schedules - UPPERCASE headers</h2>
+          <div class="meta"><code>TCO_Schedule_UppercaseHeaders</code><span class="tag">Rename</span> <span class="tag">Schedules</span></div>
+          <p>Renames the headers of all schedules in UPPERCASE.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_SheetSet_UpdateTotalCount" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Mettre à jour le nombre de feuilles total</h2>
+          <div class="meta"><code>TCO_SheetSet_UpdateTotalCount</code><span class="tag">Mise en page</span></div>
+          <p>Met à jour le nombre de feuilles total dans les jeux de feuilles sélectionnés. Le paramètre SS_Nombre de feuilles total doit être présent dans le projet. Seules les feuilles dont la propriété Figure dans la liste des feuilles est cochée seront comptabilisées.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Update Total Sheet Count</h2>
+          <div class="meta"><code>TCO_SheetSet_UpdateTotalCount</code><span class="tag">Sheet</span></div>
+          <p>Updates the total sheet count in the selected sheet sets. The SS_Nombre de feuilles total parameter must be present in the project. Only sheets whose Appears in Sheet List property is checked will be counted.</p>
+        </div>
+      </article>
+      
+      <article class="command" id="TCO_SheetTitleblock_ChangeType" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Changer le cartouche des feuilles</h2>
-          <div class="meta"><code>ChangeSheetTitleBlock</code><span class="tag">Mise en page</span></div>
+          <div class="meta"><code>TCO_SheetTitleblock_ChangeType</code><span class="tag">Mise en page</span></div>
           <p>Change le type de cartouche des feuilles sélectionnées.</p>
         </div>
         <div class="lang lang-en">
           <h2>Change Sheet Title Block</h2>
-          <div class="meta"><code>ChangeSheetTitleBlock</code><span class="tag">Sheet</span></div>
+          <div class="meta"><code>TCO_SheetTitleblock_ChangeType</code><span class="tag">Sheet</span></div>
           <p>Changes the title block type of the selected sheets.</p>
         </div>
       </article>
 
-      <article class="command" id="Datasmith2026PatchFileOnly" data-editions="full student">
+      <article class="command" id="TCO_TextNotes_FormatAndClean" data-editions="full student">
         <div class="lang lang-fr">
-          <h2>Corriger fichier Datasmith 2026</h2>
-          <div class="meta"><code>Datasmith2026PatchFileOnly</code><span class="tag">Twinmotion</span></div>
-          <p>Corrige les erreurs d&#x27;identifiants de matériau dans un fichier d&#x27;exportation .udatasmith créé avec l&#x27;outil Twinmotion &gt; Exporter vers un fichier Datasmith.</p>
+          <h2>Formatter et nettoyer notes textuelles</h2>
+          <div class="meta"><code>TCO_TextNotes_FormatAndClean</code><span class="tag">Annotations</span> <span class="tag">Mise en page</span></div>
+          <p>Formatte le texte en MAJUSCULES et uniformise plusieurs caractères dans les notes textuelles.</p>
         </div>
         <div class="lang lang-en">
-          <h2>Patch Datasmith 2026 File</h2>
-          <div class="meta"><code>Datasmith2026PatchFileOnly</code><span class="tag">Twinmotion</span></div>
-          <p>Fixes material identifier errors in a .udatasmith export file created using Twinmotion &gt; Export to Datasmith File.</p>
+          <h2>Format and Clean Text Notes</h2>
+          <div class="meta"><code>TCO_TextNotes_FormatAndClean</code><span class="tag">Annotations</span> <span class="tag">Sheet</span></div>
+          <p>Formats text in UPPERCASE and standardizes several characters in text notes.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_ViewTitle_AdjustExtensionLineLength" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Bulles titre de vue - Ajuster longueur ligne extension</h2>
+          <div class="meta"><code>TCO_ViewTitle_AdjustExtensionLineLength</code><span class="tag">Mise en page</span></div>
+          <p>Ajuste la longueur de la ligne d&#x27;extension des bulles titre de vue en fonction du titre.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>View titles - Adjust extension line length</h2>
+          <div class="meta"><code>TCO_ViewTitle_AdjustExtensionLineLength</code><span class="tag">Sheet</span></div>
+          <p>Adjusts the extension line length of view title bubbles based on the title.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_ViewTitle_MoveToSheetBottomRightCorner" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Bulles titre de vue - Au coin inférieur droit de la feuille</h2>
+          <div class="meta"><code>TCO_ViewTitle_MoveToSheetBottomRightCorner</code><span class="tag">Mise en page</span></div>
+          <p>Sélectionne le type en fonction de la taille de la feuille, ajuste la longueur de la ligne d&#x27;extension et déplace la bulle titre de vue au coin inférieur droit de la zone des vues. ATTENTION si cette commande est utilisée sur plusieurs fenêtres dans une même feuille, les bulles se superposeront. Seulement certaines cartouches sont actuellement supportées.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>View titles - Bottom-right corner of the sheet</h2>
+          <div class="meta"><code>TCO_ViewTitle_MoveToSheetBottomRightCorner</code><span class="tag">Sheet</span></div>
+          <p>Selects the type based on the sheet size, adjusts the extension line length, and moves the view title bubble to the bottom-right corner of the view area. WARNING: if this command is used on multiple viewports on the same sheet, the bubbles will overlap. Only some title blocks are currently supported.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_ViewTitle_MoveToViewBottomRightCorner" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Bulles titre de vue - Au coin inférieur droit des fenêtres</h2>
+          <div class="meta"><code>TCO_ViewTitle_MoveToViewBottomRightCorner</code><span class="tag">Mise en page</span></div>
+          <p>Sélectionne le type en fonction de la taille de la feuille, ajuste la longueur de la ligne d&#x27;extension et déplace les bulles titre de vue au coin inférieur droit des fenêtres.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>View titles - Bottom-right corner of viewports</h2>
+          <div class="meta"><code>TCO_ViewTitle_MoveToViewBottomRightCorner</code><span class="tag">Sheet</span></div>
+          <p>Selects the type based on the sheet size, adjusts the extension line length, and moves the view title bubbles to the bottom-right corner of the viewports.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_WallType_RemoveCoarseScaleFillPattern" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Types de mur - Retirer Motif vue détail faible</h2>
+          <div class="meta"><code>TCO_WallType_RemoveCoarseScaleFillPattern</code><span class="tag">Matériaux</span></div>
+          <p>Ajuste la propriété Motif vue détail faible des types de mur à &lt;Aucun motif&gt;.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Wall Types - Remove Coarse Scale Fill Pattern</h2>
+          <div class="meta"><code>TCO_WallType_RemoveCoarseScaleFillPattern</code><span class="tag">Materials</span></div>
+          <p>Sets the Coarse Scale Fill Pattern property of wall types to &lt;No pattern&gt;.</p>
+        </div>
+      </article>
+
+      <article class="command" id="TCO_ZoomToSelectedObjects" data-editions="full student">
+        <div class="lang lang-fr">
+          <h2>Zoom sélection</h2>
+          <div class="meta"><code>TCO_ZoomToSelectedObjects</code><span class="tag">Navigation</span></div>
+          <p>Ajuste la vue active en fonction des éléments sélectionnés.</p>
+        </div>
+        <div class="lang lang-en">
+          <h2>Zoom Selection</h2>
+          <div class="meta"><code>TCO_ZoomToSelectedObjects</code><span class="tag">Navigation</span></div>
+          <p>Adjusts the active view to the selected elements.</p>
         </div>
       </article>
 
@@ -357,16 +500,16 @@
         </div>
       </article>
 
-      <article class="command" id="FormatAndCleanTextNotes" data-editions="full student">
+      <article class="command" id="Datasmith2026PatchFileOnly" data-editions="full student">
         <div class="lang lang-fr">
-          <h2>Formatter et nettoyer notes textuelles</h2>
-          <div class="meta"><code>FormatAndCleanTextNotes</code><span class="tag">Annotations</span> <span class="tag">Mise en page</span></div>
-          <p>Formatte le texte en MAJUSCULES et uniformise plusieurs caractères dans les notes textuelles.</p>
+          <h2>Corriger fichier Datasmith 2026</h2>
+          <div class="meta"><code>Datasmith2026PatchFileOnly</code><span class="tag">Twinmotion</span></div>
+          <p>Corrige les erreurs d&#x27;identifiants de matériau dans un fichier d&#x27;exportation .udatasmith créé avec l&#x27;outil Twinmotion &gt; Exporter vers un fichier Datasmith.</p>
         </div>
         <div class="lang lang-en">
-          <h2>Format and Clean Text Notes</h2>
-          <div class="meta"><code>FormatAndCleanTextNotes</code><span class="tag">Annotations</span> <span class="tag">Sheet</span></div>
-          <p>Formats text in UPPERCASE and standardizes several characters in text notes.</p>
+          <h2>Patch Datasmith 2026 File</h2>
+          <div class="meta"><code>Datasmith2026PatchFileOnly</code><span class="tag">Twinmotion</span></div>
+          <p>Fixes material identifier errors in a .udatasmith export file created using Twinmotion &gt; Export to Datasmith File.</p>
         </div>
       </article>
 
@@ -380,45 +523,6 @@
           <h2>Initialize Note View Parameter</h2>
           <div class="meta"><code>InitializeNoteViewParameter</code><span class="tag">Annotations</span></div>
           <p>Initializes the &quot;View&quot; parameter of all notes based on the &quot;SS_Annotation_Note_01&quot; family by entering the name of the view in which the note was added. This will make it easier to filter note schedules by view.</p>
-        </div>
-      </article>
-
-      <article class="command" id="UpdateTotalSheetCount" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Mettre à jour le nombre de feuilles total</h2>
-          <div class="meta"><code>UpdateTotalSheetCount</code><span class="tag">Mise en page</span></div>
-          <p>Met à jour le nombre de feuilles total dans les jeux de feuilles sélectionnés. Le paramètre SS_Nombre de feuilles total doit être présent dans le projet. Seules les feuilles dont la propriété Figure dans la liste des feuilles est cochée seront comptabilisées.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Update Total Sheet Count</h2>
-          <div class="meta"><code>UpdateTotalSheetCount</code><span class="tag">Sheet</span></div>
-          <p>Updates the total sheet count in the selected sheet sets. The SS_Nombre de feuilles total parameter must be present in the project. Only sheets whose Appears in Sheet List property is checked will be counted.</p>
-        </div>
-      </article>
-
-      <article class="command" id="UpdateDoorScheduleRooms" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Mettre à jour les pièces dans un tableau de portes</h2>
-          <div class="meta"><code>UpdateDoorScheduleRooms</code><span class="tag">Nomenclatures</span></div>
-          <p>Met à jour la propriété Porte pièces en combinant DE @ À. Les pièces vides seront indiquées extérieures EXT.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Update Rooms in Door Schedule</h2>
-          <div class="meta"><code>UpdateDoorScheduleRooms</code><span class="tag">Schedules</span></div>
-          <p>Updates the Porte pièces property by combining FROM @ TO. Empty rooms will be marked as exterior EXT.</p>
-        </div>
-      </article>
-
-      <article class="command" id="UppercaseScheduleHeaders" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Nomenclatures - En-têtes en MAJUSCULES</h2>
-          <div class="meta"><code>UppercaseScheduleHeaders</code><span class="tag">Renommer</span> <span class="tag">Nomenclatures</span></div>
-          <p>Renomme les en-têtes de toutes les nomenclatures en MAJUSCULES.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Schedules - UPPERCASE headers</h2>
-          <div class="meta"><code>UppercaseScheduleHeaders</code><span class="tag">Rename</span> <span class="tag">Schedules</span></div>
-          <p>Renames the headers of all schedules in UPPERCASE.</p>
         </div>
       </article>
 
@@ -474,71 +578,6 @@
         </div>
       </article>
 
-      <article class="command" id="RenameGrids" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Quadrillages - Renommer</h2>
-          <div class="meta"><code>RenameGrids</code><span class="tag">Renommer</span></div>
-          <p>Renomme les quadrillages comme dans Excel. Les quadrillages verrouillés ne seront pas modifiés.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Grids - Rename</h2>
-          <div class="meta"><code>RenameGrids</code><span class="tag">Rename</span></div>
-          <p>Renames grids like in Excel. Pinned grids will not be modified.</p>
-        </div>
-      </article>
-
-      <article class="command" id="RenameUsedMaterialAppearancesLikeMaterials" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Renommer les apparences comme les matériaux</h2>
-          <div class="meta"><code>RenameUsedMaterialAppearancesLikeMaterials</code><span class="tag">Matériaux</span></div>
-          <p>Renomme les apparences de tous les matériaux utilisés dans le projet en appliquant le même nom que le matériau. Les apparences partagées seront ignorées.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Rename Appearances Like Materials</h2>
-          <div class="meta"><code>RenameUsedMaterialAppearancesLikeMaterials</code><span class="tag">Materials</span></div>
-          <p>Renames the appearances of all materials used in the project by applying the same name as the material. Shared appearances will be ignored.</p>
-        </div>
-      </article>
-
-      <article class="command" id="DimensionTextMoveInsideCropRegion" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Repositionner automatiquement le texte des dimensions dans le cadrage</h2>
-          <div class="meta"><code>DimensionTextMoveInsideCropRegion</code><span class="tag">Annotations</span></div>
-          <p>Repositionne le texte des dimensions sélectionnées à l&#x27;intérieur du cadrage de la vue (le plus proche de la position initiale). Cette commande permet d&#x27;éviter que le texte soit mal représenté en PDF (survient lorsque le texte est entre 2 zones). Fonctionne seulement avec les cotes dont les segments sont des lignes droites.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Automatically Reposition Dimension Text Inside Crop Region</h2>
-          <div class="meta"><code>DimensionTextMoveInsideCropRegion</code><span class="tag">Annotations</span></div>
-          <p>Repositions the text of selected dimensions inside the view crop region, as close as possible to its original position. This command helps prevent text from being incorrectly represented in PDFs, which can occur when the text is between two regions. Only works with dimensions whose segments are straight lines.</p>
-        </div>
-      </article>
-
-      <article class="command" id="DimensionTextMoveToPoint" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Repositionner le texte d&#x27;une dimension</h2>
-          <div class="meta"><code>DimensionTextMoveToPoint</code><span class="tag">Annotations</span></div>
-          <p>Permet de repositionner manuellement le texte d&#x27;une dimension sélectionnée. Utile pour les dimensions dont le texte est positionné entre 2 zones de cadrage. Dans cette situation, le texte d&#x27;une cote ne peut pas être déplacé avec la poignée standard.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Reposition Dimension Text</h2>
-          <div class="meta"><code>DimensionTextMoveToPoint</code><span class="tag">Annotations</span></div>
-          <p>Allows the text of a selected dimension to be manually repositioned. Useful for dimensions whose text is positioned between two crop regions. In this situation, the dimension text cannot be moved with the standard grip.</p>
-        </div>
-      </article>
-
-      <article class="command" id="SelectByPhase" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Sélectionner par phase</h2>
-          <div class="meta"><code>SelectByPhase</code><span class="tag">Sélectionner</span></div>
-          <p>Sélectionne tous les éléments du projet selon la phase spécifiée.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Select by Phase</h2>
-          <div class="meta"><code>SelectByPhase</code><span class="tag">Select</span></div>
-          <p>Selects all project elements according to the specified phase.</p>
-        </div>
-      </article>
-
       <article class="command" id="TransferRoomFinishesFinishesToIndexes" data-editions="full student">
         <div class="lang lang-fr">
           <h2>Transférer les finitions de pièce (finitions &gt; index)</h2>
@@ -562,45 +601,6 @@
           <h2>Transfer Room Finishes (index &gt; finishes)</h2>
           <div class="meta"><code>TransferRoomFinishesIndexesToFinishes</code><span class="tag">Schedules</span></div>
           <p>Transfers the indexes used in the custom &quot;Pièce finition index&quot; properties to the default room finish properties: Floor Finish, Wall Finish, and Ceiling Finish.</p>
-        </div>
-      </article>
-
-      <article class="command" id="WallTypesRemoveCoarseScaleFillPattern" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Types de mur - Retirer Motif vue détail faible</h2>
-          <div class="meta"><code>WallTypesRemoveCoarseScaleFillPattern</code><span class="tag">Matériaux</span></div>
-          <p>Ajuste la propriété Motif vue détail faible des types de mur à &lt;Aucun motif&gt;.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Wall Types - Remove Coarse Scale Fill Pattern</h2>
-          <div class="meta"><code>WallTypesRemoveCoarseScaleFillPattern</code><span class="tag">Materials</span></div>
-          <p>Sets the Coarse Scale Fill Pattern property of wall types to &lt;No pattern&gt;.</p>
-        </div>
-      </article>
-
-      <article class="command" id="ListUsedMaterialsWithMissingTextures" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Vérifier les textures des matériaux</h2>
-          <div class="meta"><code>ListUsedMaterialsWithMissingTextures</code><span class="tag">Matériaux</span></div>
-          <p>Vérifie les textures de tous les matériaux utilisés dans le projet. Un journal détaillé sera créé pour répertorier les textures manquantes s&#x27;il y a lieu.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Check Material Textures</h2>
-          <div class="meta"><code>ListUsedMaterialsWithMissingTextures</code><span class="tag">Materials</span></div>
-          <p>Checks the textures of all materials used in the project. A detailed log will be created to list missing textures, if any.</p>
-        </div>
-      </article>
-
-      <article class="command" id="ZoomSelection" data-editions="full student">
-        <div class="lang lang-fr">
-          <h2>Zoom sélection</h2>
-          <div class="meta"><code>ZoomSelection</code><span class="tag">Navigation</span></div>
-          <p>Ajuste la vue active en fonction des éléments sélectionnés.</p>
-        </div>
-        <div class="lang lang-en">
-          <h2>Zoom Selection</h2>
-          <div class="meta"><code>ZoomSelection</code><span class="tag">Navigation</span></div>
-          <p>Adjusts the active view to the selected elements.</p>
         </div>
       </article>
 
